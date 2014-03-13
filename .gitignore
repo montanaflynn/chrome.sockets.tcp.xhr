@@ -1,0 +1,8 @@
+# npm
+npm-debug.log
+
+# Folders to ignore
+test/report
+node_modules
+bower_components
+dist
