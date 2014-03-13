@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+    "minimum_chrome_version": "33",
+
+    "app": {
+        "background": {
+            "scripts": ["chrome.sockets.tcp.xhr.js", "main.js"]
+        }
+    },
+
+    "version": "0.0.0",
+    "name": "chrome.sockets.tcp.xhr",
+    "author": "Ahmad Nassri <ahmad@codeinchaos.com> (http://ahmadnassri.com)",
+
+    "offline_enabled": true,
+
+    "sockets": {
+        "tcp": {
+            "connect": "*:*"
+        }
+    }
+}

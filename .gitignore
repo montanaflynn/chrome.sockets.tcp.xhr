@@ -4,5 +4,6 @@ npm-debug.log
 # Folders to ignore
 test/report
 node_modules
-bower_components
-dist
+
+# compiled testing files
+test/chrome.sockets.tcp.xhr.*

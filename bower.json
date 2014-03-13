@@ -1,0 +1,28 @@
+{
+  "name": "chrome.sockets.tcp.xhr",
+  "version": "0.0.1",
+  "license": "MIT",
+  "homepage": "https://github.com/codeinchaos/chrome.sockets.tcp.xhr for Chrome Apps",
+  "authors": [
+    "Ahmad Nassri <ahmad@codeinchaos.com> (http://ahmadnassri.com)"
+  ],
+  "keywords": [
+    "XHR",
+    "XMLHttpRequest",
+    "Chrome",
+    "Sockets"
+  ],
+  "main": [
+    "dist/chrome.sockets.tcp.xhr.js",
+    "dist/chrome.sockets.tcp.xhr.min.js"
+  ],
+  "ignore": [
+    "**/.*",
+    ".md",
+    "test",
+    "src",
+    "node_modules",
+    "package.json",
+    "Gruntfile.js"
+  ]
+}
