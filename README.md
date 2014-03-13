@@ -1,7 +1,7 @@
 # chrome.sockets.tcp.xhr
 [![Build Status](https://travis-ci.org/codeinchaos/chrome.sockets.tcp.xhr.png?branch=master)](https://travis-ci.org/codeinchaos/chrome.sockets.tcp.xhr)
 [![Dependency Status](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr.png)](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr#info=Dependencies)
-[![devDependency Status](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr.png/dev-status.png)](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr#info=devDependencies)
+[![devDependency Status](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr/dev-status.png)](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr#info=devDependencies)
 [![Total views](https://sourcegraph.com/api/repos/github.com/codeinchaos/chrome.sockets.tcp.xhr/counters/views.png)](https://sourcegraph.com/github.com/codeinchaos/chrome.sockets.tcp.xhr)
 
 an `XHR` polyfill using `chrome.sockets.tcp` for Chrome Apps
