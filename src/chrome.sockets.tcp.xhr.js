@@ -36,13 +36,110 @@
                 }
             },
 
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#the-timeout-attribute
+             * TODO: time in milliseconds.
+             */
+            timeout: {
+                enumerable: true,
+                writable: true,
+                value: 0
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#the-withcredentials-attribute
+             */
+            withCredentials: {
+                enumerable: true,
+                writable: true,
+                value: false
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#the-upload-attribute
+             */
+            upload: {
+                enumerable: true,
+                writable: true,
+                value: null
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#the-status-attribute
+             */
+            status: {
+                enumerable: true,
+                writable: true,
+                value: 0
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#the-statustext-attribute
+             */
+            statusText: {
+                enumerable: true,
+                writable: true,
+                value: null
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#the-responsetype-attribute
+             */
+            responseType: {
+                enumerable: true,
+                writable: true,
+                value: ''
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#the-response-attribute
+             */
+            response: {
+                enumerable: true,
+                writable: true,
+                value: null
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#the-responsetext-attribute
+             */
+            responseText: {
+                enumerable: true,
+                writable: true,
+                value: null
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#the-responsexml-attribute
+             */
+            responseXML: {
+                enumerable: true,
+                writable: true,
+                value: null
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#event-handlers
+             */
             onreadystatechange: {
                 enumerable: true,
                 writable: true,
                 value: null
             },
 
-            onload: {
+            onloadstart: {
+                enumerable: true,
+                writable: true,
+                value: null
+            },
+
+            onprogress: {
+                enumerable: true,
+                writable: true,
+                value: null
+            },
+
+            onabort: {
                 enumerable: true,
                 writable: true,
                 value: null
@@ -54,7 +151,19 @@
                 value: null
             },
 
-            onprogress: {
+            onload: {
+                enumerable: true,
+                writable: true,
+                value: null
+            },
+
+            ontimeout: {
+                enumerable: true,
+                writable: true,
+                value: null
+            },
+
+            onloadend: {
                 enumerable: true,
                 writable: true,
                 value: null
@@ -74,67 +183,7 @@
                         this.onreadystatechange(this.props.readyState);
                     }
                 }
-            },
-
-            response: {
-                enumerable: true,
-                writable: true,
-                value: null
-            },
-
-            responseText: {
-                enumerable: true,
-                writable: true,
-                value: null
-            },
-
-            responseType: {
-                enumerable: true,
-                writable: true,
-                value: ''
-            },
-
-            responseXML: {
-                enumerable: true,
-                writable: true,
-                value: null
-            },
-
-            status: {
-                enumerable: true,
-                writable: true,
-                value: 0
-            },
-
-            statusText: {
-                enumerable: true,
-                writable: true,
-                value: null
-            },
-
-            timeout: {
-                enumerable: true,
-                writable: true,
-                value: 0
-            },
-
-            ontimeout: {
-                enumerable: true,
-                writable: true,
-                value: null
-            },
-
-            upload: {
-                enumerable: true,
-                writable: true,
-                value: null
-            },
-
-            withCredentials: {
-                enumerable: true,
-                writable: true,
-                value: false
-            },
+            }
         });
     };
 
@@ -185,30 +234,52 @@
         '$', 'i'
     );
 
-    ChromeSocketsXMLHttpRequest.prototype.abort = function () {
-        this.disconnect();
-    };
-
-    ChromeSocketsXMLHttpRequest.prototype.getResponseHeader = function (header) {
-        // TODO: use regex
-    };
-
-    ChromeSocketsXMLHttpRequest.prototype.getAllResponseHeaders = function () {
-        return this.options.response.headers;
-    };
-
+    /**
+     * http://www.w3.org/TR/XMLHttpRequest/#the-open()-method
+     */
     ChromeSocketsXMLHttpRequest.prototype.open = function (method, url) {
-        // readyState = OPENED
-        this.readyState = 1;
         this.options.method = method;
         this.options.uri = this.regex.exec(url);
+
+        // check if the method is valid
+        if (!this.options.method) {
+            throw new TypeError('method is not a valid HTTP method');
+        }
+
+        // check if the URI parsed properly
+        if (this.options.uri === null) {
+            throw new TypeError('url cannot be parsed');
+        }
+
+        // set readyState to OPENED
+        this.readyState = 1;
 
         this.setRequestHeader('Host', this.options.uri[2]);
     };
 
-    ChromeSocketsXMLHttpRequest.prototype.overrideMimeType = function (mimetype) {
+    /**
+     * http://www.w3.org/TR/XMLHttpRequest/#the-setrequestheader()-method
+     */
+    ChromeSocketsXMLHttpRequest.prototype.setRequestHeader = function (header, value) {
+        if (this.readyState !== 1 || this.options.inprogress === true) {
+            throw new TypeError('InvalidStateError');
+        }
+
+        if (!header) {
+            throw new TypeError('header is not a valid HTTP header field name');
+        }
+
+        if (!value && value.length !== 0) {
+            throw new TypeError('value is not a valid HTTP header field value.');
+        }
+
+        // TODO: If header is in the headers list, append ",", followed by U+0020, followed by value.
+        this.options.headers[header] = value;
     };
 
+    /**
+     * http://www.w3.org/TR/XMLHttpRequest/#the-send()-method
+     */
     ChromeSocketsXMLHttpRequest.prototype.send = function (data) {
         var socketProperties = {
             persistent: false,
@@ -225,9 +296,34 @@
         }
     };
 
-    ChromeSocketsXMLHttpRequest.prototype.setRequestHeader = function (header, value) {
-        this.options.headers[header] = value;
+    /**
+     * http://www.w3.org/TR/XMLHttpRequest/#the-abort()-method
+     */
+    ChromeSocketsXMLHttpRequest.prototype.abort = function () {
+        this.disconnect();
     };
+
+    /**
+     * http://www.w3.org/TR/XMLHttpRequest/#the-getresponseheader()-method
+     */
+    ChromeSocketsXMLHttpRequest.prototype.getResponseHeader = function (header) {
+        // TODO: use regex
+    };
+
+    /**
+     * http://www.w3.org/TR/XMLHttpRequest/#the-getallresponseheaders()-method
+     */
+    ChromeSocketsXMLHttpRequest.prototype.getAllResponseHeaders = function () {
+        return this.options.response.headers;
+    };
+
+    /**
+     * http://www.w3.org/TR/XMLHttpRequest/#the-overridemimetype()-method
+     */
+    ChromeSocketsXMLHttpRequest.prototype.overrideMimeType = function (mimetype) {
+    };
+
+
 
     ChromeSocketsXMLHttpRequest.prototype.sendAsBinary = function (body) {
     };
@@ -287,7 +383,7 @@
             // slice the headers up to CRLFx2
             this.options.response.headers = response.slice(0, match.index);
 
-            // readyState = HEADERS_RECEIVED
+            // set readyState to HEADERS_RECEIVED
             this.readyState = 2;
 
             // slice the body right after CRLFx2
@@ -296,7 +392,7 @@
             // set the response object
             this.responseText = this.options.response.responseText;
 
-            // readyState = LOADING
+            // set readyState to LOADING
             this.readyState = 3;
 
             // TODO: set the response entity body according to responseType, as an ArrayBuffer, Blob, Document, JavaScript object (for "json"), or string.
@@ -304,7 +400,7 @@
 
             // TODO: parse headers to get status, statusText
 
-            // readyState = DONE
+            // set readyState to DONE
             this.readyState = 4;
 
             //console.log('headers: ', this.options.response.headers);
