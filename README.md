@@ -1,8 +1,10 @@
-# chrome.sockets.tcp.xhr
-[![Build Status](https://travis-ci.org/codeinchaos/chrome.sockets.tcp.xhr.png?branch=master)](https://travis-ci.org/codeinchaos/chrome.sockets.tcp.xhr)
-[![Dependency Status](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr.png)](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr#info=Dependencies)
-[![devDependency Status](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr/dev-status.png)](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr#info=devDependencies)
-[![Total views](https://sourcegraph.com/api/repos/github.com/codeinchaos/chrome.sockets.tcp.xhr/counters/views.png)](https://sourcegraph.com/github.com/codeinchaos/chrome.sockets.tcp.xhr)
+# chrome.sockets.tcp.xhr ![GitHub version][github-image]
+
+[![Build Status][travis-image]][travis-url]
+[![Dependency Status][daviddm-url]][daviddm-image]
+[![devDependency Status][daviddm-dev-url]][daviddm-dev-image]
+[![Coverage Status][coveralls-image]][coveralls-url]
+[![Total views][sourcegraph-image]][sourcegraph-url]
 
 an `XMLHttpRequest` drop-in replacement using [chrome.sockets.tcp](http://developer.chrome.com/apps/sockets_tcp) for [Chrome Apps](http://developer.chrome.com/apps/about_apps)
 
@@ -34,8 +36,8 @@ Four quick start options are available:
 
 - [Download the latest release](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/releases).
 - Clone the repo: `git clone git@github.com:codeinchaos/chrome.sockets.tcp.xhr.git`.
-- Install with [Bower](http://bower.io): `bower install chrome.sockets.tcp.xhr`.
-- Install with [NPM](http://npmjs.org): `npm install chrome.sockets.tcp.xhr`.
+- Install with [Bower](http://bower.io): `bower install chrome.sockets.tcp.xhr`.  [![Bower version][bower-image]][bower-url]
+- Install with [NPM](http://npmjs.org): `npm install chrome.sockets.tcp.xhr`. [![NPM version][npm-image]][npm-url]
 
 ### What's included
 
@@ -106,18 +108,18 @@ More over, if your pull request contains JavaScript patches or features, you mus
 
 Editor preferences are available in the [editor config](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
-## Contribute and Earn
+### Contribute and Earn
 
 Donate bitcoins to this project or make commits and get tips for it. If your commit is accepted by project maintainer and there are bitcoins on its balance, you will get a tip!
 
-[![tip for next commit](http://tip4commit.com/projects/639.svg)](http://tip4commit.com/projects/639)
+[![tip for next commit][tip4commit-image]][tip4commit-url]
 
 ## Donating
 
 Donations are welcome to help support the continuous development of this project.
 
-[![GitTip](http://img.shields.io/gittip/ahmadnassri.svg)](https://www.gittip.com/ahmadnassri/)
-[![PayPal](http://img.shields.io/badge/PayPal-Donate-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ2B2BTK9VLRS)
+[![GitTip][gittip-image]][gittip-url]
+[![PayPal][paypal-image]][paypal-url]
 
 ## Community
 
@@ -155,6 +157,24 @@ For more information on SemVer, please visit <http://semver.org/>.
 
 Licensed under [the MIT license](LICENSE-MIT).
 
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/codeinchaos/chrome.sockets.tcp.xhr/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+[github-image]: https://badge.fury.io/gh/codeinchaos%2Fchrome.sockets.tcp.xhr.png
+[bower-url]: http://badge.fury.io/bo/chrome.sockets.tcp.xhr
+[bower-image]: https://badge.fury.io/bo/chrome.sockets.tcp.xhr.png
+[npm-url]: http://badge.fury.io/js/chrome.sockets.tcp.xhr
+[npm-image]: https://badge.fury.io/js/chrome.sockets.tcp.xhr.png
+[travis-url]: https://travis-ci.org/codeinchaos/chrome.sockets.tcp.xhr
+[travis-image]: https://travis-ci.org/codeinchaos/chrome.sockets.tcp.xhr.png?branch=master
+[daviddm-url]: https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr
+[daviddm-image]: https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr.png
+[daviddm-dev-url]: https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr#info=devDependencies
+[daviddm-dev-image]: https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr/dev-status.png
+[coveralls-url]: https://coveralls.io/r/codeinchaos/chrome.sockets.tcp.xhr
+[coveralls-image]: https://coveralls.io/repos/codeinchaos/chrome.sockets.tcp.xhr/badge.png
+[sourcegraph-url]: https://sourcegraph.com/github.com/codeinchaos/chrome.sockets.tcp.xhr
+[sourcegraph-image]: https://sourcegraph.com/api/repos/github.com/codeinchaos/chrome.sockets.tcp.xhr/counters/views.png
+[gittip-url]: https://www.gittip.com/ahmadnassri/
+[gittip-image]: http://img.shields.io/gittip/ahmadnassri.svg
+[paypal-url]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ2B2BTK9VLRS
+[paypal-image]: http://img.shields.io/badge/PayPal-Donate-green.svg
+[tip4commit-url]: http://tip4commit.com/projects/639
+[tip4commit-image]: http://tip4commit.com/projects/639.svg
