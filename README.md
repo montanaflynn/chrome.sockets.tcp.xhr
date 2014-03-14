@@ -35,9 +35,20 @@ an `XMLHttpRequest` drop-in replacement using [chrome.sockets.tcp](http://develo
 Four quick start options are available:
 
 - [Download the latest release](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/releases).
-- Clone the repo: `git clone git@github.com:codeinchaos/chrome.sockets.tcp.xhr.git`.
-- Install with [Bower](http://bower.io): `bower install chrome.sockets.tcp.xhr`.  [![Bower version][bower-image]][bower-url]
-- Install with [NPM](http://npmjs.org): `npm install chrome.sockets.tcp.xhr`. [![NPM version][npm-image]][npm-url]
+- Clone the repo: 
+  ```bash
+git clone git@github.com:codeinchaos/chrome.sockets.tcp.xhr.git
+```
+
+- Install with [Bower](http://bower.io) [![Bower version][bower-image]][bower-url]
+  ```bash
+bower install chrome.sockets.tcp.xhr
+```
+
+- Install with [NPM](http://npmjs.org) [![NPM version][npm-image]][npm-url]
+  ```bash
+npm install chrome.sockets.tcp.xhr
+```
 
 ### What's included
 
