@@ -4,7 +4,6 @@
 [![devDependency Status](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr/dev-status.png)](https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr#info=devDependencies)
 [![Total views](https://sourcegraph.com/api/repos/github.com/codeinchaos/chrome.sockets.tcp.xhr/counters/views.png)](https://sourcegraph.com/github.com/codeinchaos/chrome.sockets.tcp.xhr)
 
-an `XHR` polyfill using `chrome.sockets.tcp` for Chrome Apps
 an `XMLHttpRequest` drop-in replacement using [chrome.sockets.tcp](http://developer.chrome.com/apps/sockets_tcp) for [Chrome Apps](http://developer.chrome.com/apps/about_apps)
 
 **NOTE: This is still in pre-release stage, use at your own risk, cannot gaurantee functionality**
