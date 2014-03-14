@@ -338,7 +338,7 @@
 
         this.options.createInfo = createInfo;
 
-        chrome.sockets.tcp.connect(createInfo.socketId, this.options.uri[2], parseInt(port), this.onConnect.bind(this));
+        chrome.sockets.tcp.connect(createInfo.socketId, this.options.uri[2], parseInt(port, null), this.onConnect.bind(this));
     };
 
     ChromeSocketsXMLHttpRequest.prototype.onConnect = function (result) {

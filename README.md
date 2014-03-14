@@ -1,6 +1,7 @@
 # chrome.sockets.tcp.xhr ![GitHub version][github-image]
 
 [![Build Status][travis-image]][travis-url]
+[![Code Climate][codeclimate-image]][codeclimate-url]
 [![Dependency Status][daviddm-url]][daviddm-image]
 [![devDependency Status][daviddm-dev-url]][daviddm-dev-image]
 [![Coverage Status][coveralls-image]][coveralls-url]
@@ -175,6 +176,8 @@ Licensed under [the MIT license](LICENSE-MIT).
 [npm-image]: https://badge.fury.io/js/chrome.sockets.tcp.xhr.png
 [travis-url]: https://travis-ci.org/codeinchaos/chrome.sockets.tcp.xhr
 [travis-image]: https://travis-ci.org/codeinchaos/chrome.sockets.tcp.xhr.png?branch=master
+[codeclimate-url]: https://codeclimate.com/github/codeinchaos/chrome.sockets.tcp.xhr
+[codeclimate-image]: https://codeclimate.com/github/codeinchaos/chrome.sockets.tcp.xhr.png
 [daviddm-url]: https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr
 [daviddm-image]: https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr.png
 [daviddm-dev-url]: https://david-dm.org/codeinchaos/chrome.sockets.tcp.xhr#info=devDependencies
