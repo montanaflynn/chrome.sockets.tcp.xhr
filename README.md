@@ -30,7 +30,7 @@ an `XMLHttpRequest` drop-in replacement using [chrome.sockets.tcp](http://develo
 
 Four quick start options are available:
 
-- [Download the latest release](/codeinchaos/chrome.sockets.tcp.xhr/releases).
+- [Download the latest release](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/releases).
 - Clone the repo: 
   ```bash
 git clone git@github.com:codeinchaos/chrome.sockets.tcp.xhr.git
@@ -81,17 +81,17 @@ xhr.send(null);
 ```
 
 ## ChangeLog
-refer to the [releases](/codeinchaos/chrome.sockets.tcp.xhr/releases) section for a detailed ChangeLog
+refer to the [releases](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/releases) section for a detailed ChangeLog
 
 ## Documentation
 
-Refer to the [Wiki](/codeinchaos/chrome.sockets.tcp.xhr/wiki) for detailed API documentation.
+Refer to the [Wiki](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/wiki) for detailed API documentation.
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first read the [issue guidelines](CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](/codeinchaos/chrome.sockets.tcp.xhr/issues/new).
+Have a bug or a feature request? Please first read the [issue guidelines](CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/issues/new).
 
-## Compiling[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+## Compiling [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 chrome.sockets.tcp.xhr uses [Grunt](http://gruntjs.com/). If you haven't used Grunt before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide.
 
@@ -100,7 +100,7 @@ chrome.sockets.tcp.xhr uses [Grunt](http://gruntjs.com/). If you haven't used Gr
 | Function  | Command       | Description                                                                                                                               |
 | --------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | Build     | `grunt`       | Run `grunt` to run tests locally and compile the JavaScript files into `/dist`.                                                           |
-| Tests     | `grunt test`  | Runs [JSHint](http://jshint.com) and [QUnit](http://qunitjs.com/) tests headlessly in [PhantomJS](http://phantomjs.org/) (used for CI).   |
+| Tests     | `grunt test`  | Runs [JSHint](http://jshint.com) and [Mocha](http://visionmedia.github.io/mocha/) tests.   |
 | Watch     | `grunt watch` | This is a convenience method for watching just Less files and automatically building them whenever you save.                              |
 
 ### Troubleshooting dependencies
