@@ -98,10 +98,10 @@ chrome.sockets.tcp.xhr uses [Grunt](http://gruntjs.com/). If you haven't used Gr
 ### Available Grunt commands
 
 | Function  | Command       | Description                                                                                                                               |
-| --------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Build     | `grunt`       | Run `grunt` to run tests locally and compile the JavaScript files into `/dist`.                                                           |
-| Tests     | `grunt test`  | Runs [JSHint](http://jshint.com) and [Mocha](http://visionmedia.github.io/mocha/) tests.   |
-| Watch     | `grunt watch` | This is a convenience method for watching just Less files and automatically building them whenever you save.                              |
+| --------- | ------------- | --------------------------------------------- |
+| Build     | `grunt`       | Compiles.                                     |
+| Tests     | `grunt test`  | Runs tests.                                   |
+| Watch     | `grunt watch` | This is a convenience method for watching.    |
 
 ### Troubleshooting dependencies
 
