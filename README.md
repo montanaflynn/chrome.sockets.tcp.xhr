@@ -167,7 +167,7 @@ For more information on SemVer, please visit <http://semver.org/>.
 
 ## License
 
-Licensed under [the MIT license](LICENSE-MIT).
+Licensed under [the MIT license](LICENSE).
 
 [github-image]: https://badge.fury.io/gh/codeinchaos%2Fchrome.sockets.tcp.xhr.png
 [bower-url]: http://badge.fury.io/bo/chrome.sockets.tcp.xhr
@@ -188,7 +188,7 @@ Licensed under [the MIT license](LICENSE-MIT).
 [sourcegraph-image]: https://sourcegraph.com/api/repos/github.com/codeinchaos/chrome.sockets.tcp.xhr/counters/views.png
 [gittip-url]: https://www.gittip.com/ahmadnassri/
 [gittip-image]: http://img.shields.io/gittip/ahmadnassri.svg
-[paypal-url]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ2B2BTK9VLRS
+[paypal-url]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ2B2BTK9VLRS&on0=project&os0=chrome.sockets.tcp.xhr
 [paypal-image]: http://img.shields.io/badge/PayPal-Donate-green.svg
 [tip4commit-url]: http://tip4commit.com/projects/639
 [tip4commit-image]: http://tip4commit.com/projects/639.svg

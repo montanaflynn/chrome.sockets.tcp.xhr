@@ -1,16 +1,10 @@
 {
   "private": true,
-  "name": "chrome.sockets.tcp.xhr",
   "version": "0.0.1",
-  "author": "Ahmad Nassri <ahmad@codeinchaos.com> (http://ahmadnassri.com)",
+  "name": "chrome.sockets.tcp.xhr",
   "description": "an XHR polyfill using chrome.sockets.tcp for Chrome Apps",
+  "author": "Ahmad Nassri <ahmad@codeinchaos.com> (http://ahmadnassri.com)",
   "homepage": "https://github.com/codeinchaos/chrome.sockets.tcp.xhr",
-  "keywords": [
-    "XHR",
-    "XMLHttpRequest",
-    "Chrome",
-    "Sockets"
-  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -19,11 +13,15 @@
   "bugs": {
     "url": "https://github.com/codeinchaos/chrome.sockets.tcp.xhr/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/codeinchaos/chrome.sockets.tcp.xhr/blob/master/LICENSE-MIT"
-    }
+  "keywords": [
+    "XHR",
+    "XMLHttpRequest",
+    "Chrome",
+    "Sockets"
+  ],
+  "main": "dist/chrome.sockets.tcp.xhr.min.js",
+  "files": [
+    "dist"
   ],
   "dependencies": {},
   "devDependencies": {
