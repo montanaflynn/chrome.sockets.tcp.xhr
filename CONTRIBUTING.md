@@ -11,7 +11,7 @@ patches and features.
 
 ## Using the issue tracker
 
-The [issue tracker](issues) is the preferred channel for [bug reports](#bug-reports),
+The [issue tracker](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/issues) is the preferred channel for [bug reports](#bug-reports),
 [features requests](#feature-requests) and [submitting pull requests](#pull-requests), 
 but please respect the following restrictions:
 
@@ -72,7 +72,7 @@ provide as much detail and context as possible.
 
 ## Pull requests
 
-Good pull requests - patches, improvements, new features - are a fantastic
+Good pull requests (patches, improvements, new features) are a fantastic
 help. They should remain focused in scope and avoid containing unrelated
 commits.
 
