@@ -11,11 +11,6 @@ an `XMLHttpRequest` drop-in replacement using [chrome.sockets.tcp](http://develo
 
 **NOTE: This is still in pre-release stage, use at your own risk, cannot gaurantee functionality**
 
-## TO DO
-
-- Full Compatibility with W3C XMLHttpRequest Spec
-- HTTPS support
-
 ## Table of contents
 
 - [Quick start](#quick-start)
@@ -86,7 +81,7 @@ xhr.send(null);
 ```
 
 ## Change Log
-* v0.0.0 still in development
+refer to the [releases](releases) section for a detailed ChangeLog
 
 ## Documentation
 
@@ -114,11 +109,11 @@ Should you encounter problems with installing dependencies or running Grunt comm
 
 ## Contributing
 
-Please read through our [contributing guidelines](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
+Please read through our [contributing guidelines](CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
 More over, if your pull request contains JavaScript patches or features, you must include relevant unit tests.
 
-Editor preferences are available in the [editor config](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
+Editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
 ### Contribute and Earn
 
@@ -140,11 +135,11 @@ Keep track of development and updates.
 - Follow [@ahmadnassri](http://twitter.com/ahmadnassri) & [@codeinchaos](http://twitter.com/codeinchaos) on Twitter.
 - Tweet [@codeinchaos](http://twitter.com/codeinchaos) with any questions/personal support requests.
 - Implementation help may be found at Stack Overflow (tagged [`chrome.sockets.tcp.xhr`](http://stackoverflow.com/questions/tagged/chrome.sockets.tcp.xhr)).
-- Read and subscribe to [My Blog](http://blog.ahmadnassri.com).
+- Read and subscribe to [My Blog](http://ahmadnassri.com).
 
 ## Versioning
 
-For transparency into our release cycle and in striving to maintain backward compatibility, chrome.sockets.tcp.xhr is maintained under the Semantic Versioning guidelines. Sometimes we screw up, but we'll adhere to these rules whenever possible.
+For transparency into our release cycle and in striving to maintain backward compatibility, this project is maintained under the Semantic Versioning guidelines. Sometimes we screw up, but we'll adhere to these rules whenever possible.
 
 Releases will be numbered with the following format:
 
