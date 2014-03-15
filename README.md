@@ -17,7 +17,7 @@ an `XMLHttpRequest` drop-in replacement using [chrome.sockets.tcp](http://develo
 - [ChangeLog](#changelog)
 - [Documentation](#documentation)
 - [Bugs and feature requests](#bugs-and-feature-requests)
-- [Compiling](#compiling)
+- [Compiling](#compiling-)
 - [Contributing](#contributing)
 - [Contribute and Earn](#contribute-and-earn)
 - [Donating](#donating)
@@ -80,7 +80,7 @@ xhr.setRequestHeader('X-Requested-With', 'chrome.sockets.tcp.xhr');
 xhr.send(null);
 ```
 
-## Change Log
+## ChangeLog
 refer to the [releases](/codeinchaos/chrome.sockets.tcp.xhr/releases) section for a detailed ChangeLog
 
 ## Documentation
@@ -91,7 +91,7 @@ Refer to the [Wiki](/codeinchaos/chrome.sockets.tcp.xhr/wiki) for detailed API d
 
 Have a bug or a feature request? Please first read the [issue guidelines](CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](/codeinchaos/chrome.sockets.tcp.xhr/issues/new).
 
-## Compiling [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+## Compiling[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 chrome.sockets.tcp.xhr uses [Grunt](http://gruntjs.com/). If you haven't used Grunt before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide.
 
