@@ -2,8 +2,8 @@
 
 [![Build Status][travis-image]][travis-url]
 [![Code Climate][codeclimate-image]][codeclimate-url]
-[![Dependency Status][daviddm-url]][daviddm-image]
-[![devDependency Status][daviddm-dev-url]][daviddm-dev-image]
+[![Dependency Status][daviddm-image]][daviddm-url]
+[![devDependency Status][daviddm-dev-image]][daviddm-dev-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![Total views][sourcegraph-image]][sourcegraph-url]
 
