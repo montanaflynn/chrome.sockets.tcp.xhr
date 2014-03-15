@@ -14,7 +14,7 @@ an `XMLHttpRequest` drop-in replacement using [chrome.sockets.tcp](http://develo
 ## Table of contents
 
 - [Quick start](#quick-start)
-- [Change Log](#changelog)
+- [ChangeLog](#changelog)
 - [Documentation](#documentation)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Compiling](#compiling)
@@ -30,7 +30,7 @@ an `XMLHttpRequest` drop-in replacement using [chrome.sockets.tcp](http://develo
 
 Four quick start options are available:
 
-- [Download the latest release](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/releases).
+- [Download the latest release](/codeinchaos/chrome.sockets.tcp.xhr/releases).
 - Clone the repo: 
   ```bash
 git clone git@github.com:codeinchaos/chrome.sockets.tcp.xhr.git
@@ -81,15 +81,15 @@ xhr.send(null);
 ```
 
 ## Change Log
-refer to the [releases](releases) section for a detailed ChangeLog
+refer to the [releases](/codeinchaos/chrome.sockets.tcp.xhr/releases) section for a detailed ChangeLog
 
 ## Documentation
 
-Refer to the [Wiki](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/wiki) for detailed API documentation.
+Refer to the [Wiki](/codeinchaos/chrome.sockets.tcp.xhr/wiki) for detailed API documentation.
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/blob/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/issues/new).
+Have a bug or a feature request? Please first read the [issue guidelines](CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](/codeinchaos/chrome.sockets.tcp.xhr/issues/new).
 
 ## Compiling [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
