@@ -1,4 +1,4 @@
-# chrome.sockets.tcp.xhr ![GitHub version][github-image]
+# chrome.sockets.tcp.xhr [![NPM version][npm-image]][npm-url] [![Bower version][bower-image]][bower-url]
 
 [![Build Status][travis-image]][travis-url]
 [![Code Climate][codeclimate-image]][codeclimate-url]
@@ -36,12 +36,12 @@ Four quick start options are available:
 git clone git@github.com:codeinchaos/chrome.sockets.tcp.xhr.git
 ```
 
-- Install with [Bower](http://bower.io) [![Bower version][bower-image]][bower-url]
+- Install with [Bower](http://bower.io)
   ```bash
 bower install chrome.sockets.tcp.xhr
 ```
 
-- Install with [NPM](http://npmjs.org) [![NPM version][npm-image]][npm-url]
+- Install with [NPM](http://npmjs.org)
   ```bash
 npm install chrome.sockets.tcp.xhr
 ```
@@ -163,7 +163,6 @@ For more information on SemVer, please visit <http://semver.org/>.
 
 Licensed under [the MIT license](LICENSE).
 
-[github-image]: https://badge.fury.io/gh/codeinchaos%2Fchrome.sockets.tcp.xhr.png
 [bower-url]: http://badge.fury.io/bo/chrome.sockets.tcp.xhr
 [bower-image]: https://badge.fury.io/bo/chrome.sockets.tcp.xhr.png
 [npm-url]: http://badge.fury.io/js/chrome.sockets.tcp.xhr
