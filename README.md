@@ -74,7 +74,6 @@ xhr.onerror = function (error) {
     console.info(error);
 };
 
-
 xhr.open('GET', 'http://google.com:80');
 xhr.setRequestHeader('X-Requested-With', 'chrome.sockets.tcp.xhr');
 xhr.send(null);
@@ -93,7 +92,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](CONTRI
 
 ## Compiling [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-chrome.sockets.tcp.xhr uses [Grunt](http://gruntjs.com/). If you haven't used Grunt before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide.
+This project uses [Grunt](http://gruntjs.com/). If you haven't used Grunt before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide.
 
 ### Available Grunt commands
 
@@ -132,8 +131,8 @@ Donations are welcome to help support the continuous development of this project
 
 Keep track of development and updates.
 
-- Follow [@ahmadnassri](http://twitter.com/ahmadnassri) & [@codeinchaos](http://twitter.com/codeinchaos) on Twitter.
-- Tweet [@codeinchaos](http://twitter.com/codeinchaos) with any questions/personal support requests.
+- Follow [@AhmadNassri](http://twitter.com/ahmadnassri) & [@CodeInChaos](http://twitter.com/codeinchaos) on Twitter.
+- Tweet [@CodeInChaos](http://twitter.com/codeinchaos) with any questions/personal support requests.
 - Implementation help may be found at Stack Overflow (tagged [`chrome.sockets.tcp.xhr`](http://stackoverflow.com/questions/tagged/chrome.sockets.tcp.xhr)).
 - Read and subscribe to [My Blog](http://ahmadnassri.com).
 

@@ -1,8 +1,8 @@
 {
-  "name": "chrome.sockets.tcp.xhr",
   "version": "0.0.1",
-  "license": "MIT",
+  "name": "chrome.sockets.tcp.xhr",
   "homepage": "https://github.com/codeinchaos/chrome.sockets.tcp.xhr for Chrome Apps",
+  "license": "MIT",
   "authors": [
     "Ahmad Nassri <ahmad@codeinchaos.com> (http://ahmadnassri.com)"
   ],
