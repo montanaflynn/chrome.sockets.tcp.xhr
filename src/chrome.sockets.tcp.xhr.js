@@ -9,6 +9,7 @@
                 value: {
                     uri: null,
                     data: null,
+                    events: {},
                     method: null,
                     createInfo: null,
                     inprogress: false,
@@ -22,8 +23,8 @@
                         'Content-Length': 0
                     },
                     response: {
-                        headers: null,
-                        responseText: null
+                        headers: [],
+                        headersText: null
                     }
                 }
             },
@@ -34,6 +35,53 @@
                 value: {
                     readyState: 0,
                 }
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#dom-xmlhttprequest-unsent
+             */
+            UNSENT: {
+                enumerable: false,
+                writable: true,
+                value: 0
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#dom-xmlhttprequest-opened
+             */
+            OPENED: {
+                enumerable: false,
+                writable: true,
+                value: 1
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#dom-xmlhttprequest-headers_received
+             * TODO: time in milliseconds.
+             */
+            HEADERS_RECEIVED: {
+                enumerable: false,
+                writable: true,
+                value: 2
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#dom-xmlhttprequest-loading
+             * TODO: time in milliseconds.
+             */
+            LOADING: {
+                enumerable: false,
+                writable: true,
+                value: 3
+            },
+
+            /**
+             * http://www.w3.org/TR/XMLHttpRequest/#dom-xmlhttprequest-done
+             */
+            DONE: {
+                enumerable: false,
+                writable: true,
+                value: 4
             },
 
             /**
@@ -179,9 +227,7 @@
                 set: function (value) {
                     this.props.readyState = value;
 
-                    if (this.onreadystatechange) {
-                        this.onreadystatechange(this.props.readyState);
-                    }
+                    this.dispatchEvent('readystatechange');
                 }
             }
         });
@@ -252,7 +298,7 @@
         }
 
         // set readyState to OPENED
-        this.readyState = 1;
+        this.readyState = this.OPENED;
 
         this.setRequestHeader('Host', this.options.uri[2]);
     };
@@ -261,7 +307,7 @@
      * http://www.w3.org/TR/XMLHttpRequest/#the-setrequestheader()-method
      */
     ChromeSocketsXMLHttpRequest.prototype.setRequestHeader = function (header, value) {
-        if (this.readyState !== 1 || this.options.inprogress === true) {
+        if (this.readyState !== this.OPENED || this.options.inprogress === true) {
             throw new TypeError('InvalidStateError');
         }
 
@@ -281,13 +327,74 @@
      * http://www.w3.org/TR/XMLHttpRequest/#the-send()-method
      */
     ChromeSocketsXMLHttpRequest.prototype.send = function (data) {
+        // If the state is not OPENED, throw an "InvalidStateError" exception.
+        // If the send() flag is set, throw an "InvalidStateError" exception.
+        if (this.readyState !== this.OPENED || this.options.inprogress === true) {
+            throw new TypeError('InvalidStateError');
+        }
+
+        // If the request method is GET or HEAD, set data to null
+        if (['GET', 'HEADER'].indexOf(this.options.method.toUpperCase()) !== -1) {
+            data = null;
+        }
+
+        // If data is null, do not include a request entity body and go to the next step.
+        if (data !== null) {
+            var encoding = null;
+            var mimetype = null;
+
+
+            if (data instanceof ArrayBufferView) {
+                // Let the request entity body be the raw data represented by data.
+            } else if (data instanceof Blob) {
+                // if the object's type attribute is not the empty string let mime type be its value.
+
+                // Let the request entity body be the raw data represented by data.
+            } else if (data instanceof HTMLElement) {
+                // Let encoding be "UTF-8".
+                encoding = 'UTF-8';
+
+                // If data is an HTML document, let mime type be "text/html"
+                // or let mime type be "application/xml" otherwise.
+                mimetype = 'text/html';
+
+                // Then append ";charset=UTF-8" to mime type.
+
+                //Let the request entity body be data, serialized, converted to Unicode, and utf-8 encoded. Re-throw any exception serializing throws.
+            } else if (data instanceof FormData) {
+                // Let the request entity body be the result of running the multipart/form-data encoding algorithm with data as form data set and with utf-8 as the explicit character encoding.
+
+                //Let mime type be the concatenation of "multipart/form-data;", a U+0020 SPACE character, "boundary=", and the multipart/form-data boundary string generated by the multipart/form-data encoding algorithm.
+            } else if (typeof(data) === 'string') {
+                // Let encoding be "UTF-8".
+
+                // Let mime type be "text/plain;charset=UTF-8".
+
+                // Let the request entity body be data, utf-8 encoded.
+            }
+
+            this.options.data = data;
+        }
+
+        // If a Content-Type header is in author request headers and its value is a valid MIME type that has a charset parameter whose value is not a case-insensitive match for encoding, and encoding is not null, set all the charset parameters of that Content-Type header to encoding.
+
+        // If no Content-Type header is in author request headers and mime type is not null, append a Content-Type header with value mime type to author request headers.
+
+        // Unset the error flag, upload complete flag and upload events flag.
+
+        // If there is no request entity body or if it is empty, set the upload complete flag.
+
+        // Set the send() flag.
+        this.options.inprogress = true;
+
+        // Fire a progress event named loadstart.
+        this.dispatchEvent('loadstart');
+
+        // continue with sockets setup
         var socketProperties = {
             persistent: false,
             name: 'chrome.sockets.tcp.xhr'
         };
-
-        this.options.inprogress = true;
-        this.options.data = data || null;
 
         chrome.sockets.tcp.create(socketProperties, this.onCreate.bind(this));
 
@@ -307,14 +414,14 @@
      * http://www.w3.org/TR/XMLHttpRequest/#the-getresponseheader()-method
      */
     ChromeSocketsXMLHttpRequest.prototype.getResponseHeader = function (header) {
-        // TODO: use regex
+        return this.options.response.headers[header];
     };
 
     /**
      * http://www.w3.org/TR/XMLHttpRequest/#the-getallresponseheaders()-method
      */
     ChromeSocketsXMLHttpRequest.prototype.getAllResponseHeaders = function () {
-        return this.options.response.headers;
+        return this.options.response.headersText;
     };
 
     /**
@@ -328,7 +435,53 @@
     ChromeSocketsXMLHttpRequest.prototype.sendAsBinary = function (body) {
     };
 
+    ChromeSocketsXMLHttpRequest.prototype.addEventListener = function (name, callback) {
+        if (this.options.events[name]) {
+            this.options.events[name].push(callback);
+        } else {
+            this.options.events[name] = new Array(callback);
+        }
 
+        return this;
+    };
+
+    ChromeSocketsXMLHttpRequest.prototype.removeEventListener = function(name, callback) {
+        if (this.options.events[name]) {
+            var i = this.options.events[name].indexOf(callback);
+            if (i > -1) {
+                this.options.events[name].splice(i, 1);
+            } else {
+                return false;
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    ChromeSocketsXMLHttpRequest.prototype.dispatchEvent = function(name) {
+        var args = arguments;
+
+        if (this.hasOwnProperty('on' + name)) {
+            if (this['on' + name]) {
+                this['on' + name].apply(this, Array.prototype.slice.call(args));
+            }
+        }
+
+        if (!this.options.events[name]) {
+            console.log(name);
+            return false;
+        }
+
+        this.options.events[name].forEach(function (event) {
+            event.apply(this, Array.prototype.slice.call(args));
+        }.bind(this));
+    };
+
+    /**
+     * chrome.sockets.tcp events
+     */
     ChromeSocketsXMLHttpRequest.prototype.onCreate = function (createInfo) {
         if (!this.options.inprogress) {
             return;
@@ -358,9 +511,16 @@
             chrome.sockets.tcp.onReceive.addListener(this.onReceive.bind(this));
 
             // send message as ArrayBuffer
-            this.getMessage().toArrayBuffer(function sendMessage (buffer) {
+            this.generateMessage().toArrayBuffer(function sendMessage (buffer) {
                 chrome.sockets.tcp.send(this.options.createInfo.socketId, buffer, this.onSend.bind(this));
             }.bind(this));
+        }
+    };
+
+    ChromeSocketsXMLHttpRequest.prototype.onSend = function (sendInfo) {
+        if (sendInfo.resultCode < 0) {
+            this.error({error: 'sending error'});
+            this.disconnect();
         }
     };
 
@@ -376,39 +536,80 @@
         // immediatly disconnect on first respond
         this.disconnect();
 
-        info.data.toString(function (response) {
-            // detect CRLFx2 position
-            var match = response.match(/\r\n\r\n/);
-
-            // slice the headers up to CRLFx2
-            this.options.response.headers = response.slice(0, match.index);
-
-            // set readyState to HEADERS_RECEIVED
-            this.readyState = 2;
-
-            // slice the body right after CRLFx2
-            this.options.response.responseText = response.slice(match.index + 4);
-
-            // set the response object
-            this.responseText = this.options.response.responseText;
-
-            // set readyState to LOADING
-            this.readyState = 3;
-
-            // TODO: set the response entity body according to responseType, as an ArrayBuffer, Blob, Document, JavaScript object (for "json"), or string.
-            this.response = this.responseText;
-
-            // TODO: parse headers to get status, statusText
-
-            // set readyState to DONE
-            this.readyState = 4;
-
-            //console.log('headers: ', this.options.response.headers);
-            //console.log('body: ', this.options.response.responseText);
-        }.bind(this));
+        info.data.toString(this.parseResponse.bind(this));
     };
 
-    ChromeSocketsXMLHttpRequest.prototype.getMessage = function () {
+    /**
+     * internal methods
+     */
+    ChromeSocketsXMLHttpRequest.prototype.parseResponse = function (response) {
+        // detect CRLFx2 position
+        var responseMatch = response.match(/\r\n\r\n/);
+
+        // slice the headers up to CRLFx2
+        this.options.response.headersText = response.slice(0, responseMatch.index);
+
+        // slice the body right after CRLFx2 and set the response object
+        this.responseText = response.slice(responseMatch.index + 4);
+
+        // parse headers
+        var headerLines = this.options.response.headersText.split('\r\n');
+        var statusLine = headerLines.shift();
+
+        var statusLineMatch = statusLine.match(/(HTTP\/\d\.\d)\s+((\d+)\s+.*)/);
+
+        if (statusLineMatch) {
+            this.status = statusLineMatch[3];
+            this.statusText = statusLineMatch[2];
+        }
+
+        headerLines.forEach(function (headerLine) {
+            // detect CRLFx2 position
+            var headerLineMatch = headerLine.match(/:/);
+
+            // sanity check
+            if (headerLineMatch) {
+                // slice the header line at the colon and trim output
+                var header = headerLine.slice(0, headerLineMatch.index).replace(/^\s+/g, '').replace(/\s+$/g, '');
+                var value = headerLine.slice(0, headerLineMatch.index + 1).replace(/^\s+/g, '').replace(/\s+$/g, '');
+
+                this.options.response.headers[header] = value;
+            }
+        }.bind(this));
+
+        this.processResponse();
+    };
+
+    ChromeSocketsXMLHttpRequest.prototype.processResponse = function () {
+
+        // If the response has an HTTP status code of 301, 302, 303, 307, or 308
+        // TODO: implement infinite loop precautions
+        if ([301, 302, 303, 307, 308].indexOf(this.status) !== -1) {
+            // TODO: follow redirect!
+        }
+
+        // set readyState to HEADERS_RECEIVED
+        this.readyState = this.HEADERS_RECEIVED;
+        // set readyState to LOADING
+        this.readyState = this.LOADING;
+
+        // TODO: set the response entity body according to responseType, as an ArrayBuffer, Blob, Document, JavaScript object (for "json"), or string.
+        this.response = this.responseText;
+
+        // set readyState to DONE
+        this.readyState = this.DONE;
+
+        // Fire a progress event named "progress".
+        this.dispatchEvent('progress');
+
+        // Fire a progress event named load.
+        this.dispatchEvent('load');
+
+        // Fire a progress event named loadend
+        this.dispatchEvent('loadend');
+    };
+
+    ChromeSocketsXMLHttpRequest.prototype.generateMessage = function () {
         var headers = [];
 
         // add missing parts to header
@@ -442,10 +643,10 @@
     };
 
     ChromeSocketsXMLHttpRequest.prototype.expireTimer = function () {
-        if (this.responseText === null) {
+        if (this.readyState === this.OPENED) {
             this.disconnect();
             this.options.timer.expired = true;
-            this.error({error: 'timeout'});
+            this.error({error: 'TimeoutError'});
 
             if (this.ontimeout) {
                 this.ontimeout();
@@ -453,16 +654,10 @@
         }
     };
 
-    ChromeSocketsXMLHttpRequest.prototype.onSend = function (sendInfo) {
-        if (sendInfo.resultCode < 0) {
-            this.error({error: 'sending error'});
-            this.disconnect();
-        }
-    };
-
-
-
-
+    /**
+     * internal methods
+     * TODO: consider removing from global objects
+     */
     ArrayBuffer.prototype.toString = function (callback) {
         var blob = new Blob([this]);
         var reader = new FileReader();
