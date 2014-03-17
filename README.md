@@ -96,7 +96,7 @@ This project uses [Grunt](http://gruntjs.com/). If you haven't used Grunt before
 
 ### Available Grunt commands
 
-| Function  | Command       | Description                                                                                                                               |
+| Function  | Command       | Description                                   |
 | --------- | ------------- | --------------------------------------------- |
 | Build     | `grunt`       | Compiles.                                     |
 | Tests     | `grunt test`  | Runs tests.                                   |

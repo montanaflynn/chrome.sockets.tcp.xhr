@@ -136,7 +136,7 @@
             responseType: {
                 enumerable: true,
                 writable: true,
-                value: ''
+                value: 'text'
             },
 
             /**
@@ -175,13 +175,7 @@
                 value: null
             },
 
-            onloadstart: {
-                enumerable: true,
-                writable: true,
-                value: null
-            },
-
-            onprogress: {
+            ontimeout: {
                 enumerable: true,
                 writable: true,
                 value: null
@@ -205,13 +199,29 @@
                 value: null
             },
 
-            ontimeout: {
+            onloadstart: {
                 enumerable: true,
                 writable: true,
                 value: null
             },
 
             onloadend: {
+                enumerable: true,
+                writable: true,
+                value: null
+            },
+
+            onprogress: {
+                enumerable: true,
+                writable: true,
+                value: null
+            },
+
+            /**
+             * custom event to match `chrome.webRequest.onBeforeRedirect`
+             * http://developer.chrome.com/extensions/webRequest#event-onBeforeRedirect
+             */
+            beforeredirect: {
                 enumerable: true,
                 writable: true,
                 value: null
@@ -430,11 +440,9 @@
     ChromeSocketsXMLHttpRequest.prototype.overrideMimeType = function (mimetype) {
     };
 
-
-
-    ChromeSocketsXMLHttpRequest.prototype.sendAsBinary = function (body) {
-    };
-
+    /**
+     * event managers
+     */
     ChromeSocketsXMLHttpRequest.prototype.addEventListener = function (name, callback) {
         if (this.options.events[name]) {
             this.options.events[name].push(callback);
@@ -465,17 +473,16 @@
 
         if (this.hasOwnProperty('on' + name)) {
             if (this['on' + name]) {
-                this['on' + name].apply(this, Array.prototype.slice.call(args));
+                this['on' + name].apply(this, Array.prototype.slice.call(args, 1));
             }
         }
 
         if (!this.options.events[name]) {
-            console.log(name);
             return false;
         }
 
         this.options.events[name].forEach(function (event) {
-            event.apply(this, Array.prototype.slice.call(args));
+            event.apply(this, Array.prototype.slice.call(args, 1));
         }.bind(this));
     };
 
@@ -509,6 +516,7 @@
         } else {
             // assign recieve listner
             chrome.sockets.tcp.onReceive.addListener(this.onReceive.bind(this));
+            chrome.sockets.tcp.onReceiveError.addListener(this.onReceiveError.bind(this));
 
             // send message as ArrayBuffer
             this.generateMessage().toArrayBuffer(function sendMessage (buffer) {
@@ -522,6 +530,10 @@
             this.error({error: 'sending error'});
             this.disconnect();
         }
+    };
+
+    ChromeSocketsXMLHttpRequest.prototype.onReceiveError = function (error) {
+        this.error(error);
     };
 
     ChromeSocketsXMLHttpRequest.prototype.onReceive = function (info) {
@@ -559,7 +571,7 @@
         var statusLineMatch = statusLine.match(/(HTTP\/\d\.\d)\s+((\d+)\s+.*)/);
 
         if (statusLineMatch) {
-            this.status = statusLineMatch[3];
+            this.status = parseInt(statusLineMatch[3], 0);
             this.statusText = statusLineMatch[2];
         }
 
@@ -571,7 +583,7 @@
             if (headerLineMatch) {
                 // slice the header line at the colon and trim output
                 var header = headerLine.slice(0, headerLineMatch.index).replace(/^\s+/g, '').replace(/\s+$/g, '');
-                var value = headerLine.slice(0, headerLineMatch.index + 1).replace(/^\s+/g, '').replace(/\s+$/g, '');
+                var value = headerLine.slice(headerLineMatch.index + 1).replace(/^\s+/g, '').replace(/\s+$/g, '');
 
                 this.options.response.headers[header] = value;
             }
@@ -586,6 +598,9 @@
         // TODO: implement infinite loop precautions
         if ([301, 302, 303, 307, 308].indexOf(this.status) !== -1) {
             // TODO: follow redirect!
+            var redirectUrl = this.getResponseHeader('Location');
+
+            this.dispatchEvent('beforeredirect', redirectUrl, this.options.response.headers, this.statusText);
         }
 
         // set readyState to HEADERS_RECEIVED
@@ -619,6 +634,8 @@
             headers.push(name + ': ' + this.options.headers[name]);
         }
 
+        console.log(headers);
+
         return headers.join('\r\n') + '\r\n\r\n' + this.options.data;
     };
 
@@ -627,9 +644,8 @@
             this.disconnect();
         }
 
-        if (this.onerror) {
-            this.onerror(error);
-        }
+
+        this.dispatchEvent('error', error);
     };
 
     ChromeSocketsXMLHttpRequest.prototype.disconnect = function () {
@@ -648,9 +664,7 @@
             this.options.timer.expired = true;
             this.error({error: 'TimeoutError'});
 
-            if (this.ontimeout) {
-                this.ontimeout();
-            }
+            this.dispatchEvent('timeout');
         }
     };
 
