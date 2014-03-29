@@ -84,7 +84,7 @@ refer to the [releases](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/re
 
 ## Documentation
 
-Refer to the [Wiki](https://github.com/codeinchaos/chrome.sockets.tcp.xhr/wiki) for detailed API documentation.
+Refer to [chromesocketstcpxhr.readthedocs.org](http://chromesocketstcpxhr.readthedocs.org/en/latest/) for detailed API documentation.
 
 ## Bugs and feature requests
 
