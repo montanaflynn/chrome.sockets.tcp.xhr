@@ -4,6 +4,7 @@ npm-debug.log
 # Folders to ignore
 test/report
 node_modules
+docs/_build/
 
 # compiled testing files
 test/chrome.sockets.tcp.xhr.*
