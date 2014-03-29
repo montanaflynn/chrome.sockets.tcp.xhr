@@ -228,7 +228,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'chromesocketstcpxhr', u'chrome.sockets.tcp.xhr Documentation',
-   u'Ahmad Nassri', 'chromesocketstcpxhr', 'One line description of project.',
+   u'Ahmad Nassri', 'chromesocketstcpxhr', 'an XMLHttpRequest drop-in replacement using chrome.sockets.tcp for Chrome Apps',
    'Miscellaneous'),
 ]
 

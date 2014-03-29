@@ -2,7 +2,7 @@
   "private": true,
   "version": "0.0.1",
   "name": "chrome.sockets.tcp.xhr",
-  "description": "an XHR polyfill using chrome.sockets.tcp for Chrome Apps",
+  "description": "an XMLHttpRequest drop-in replacement using chrome.sockets.tcp for Chrome Apps",
   "author": "Ahmad Nassri <ahmad@codeinchaos.com> (http://ahmadnassri.com)",
   "homepage": "https://github.com/codeinchaos/chrome.sockets.tcp.xhr",
   "license": "MIT",
