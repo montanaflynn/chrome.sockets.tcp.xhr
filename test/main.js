@@ -38,8 +38,8 @@ xhr.addEventListener('beforeredirect', function (redirectUrl, responseHeaders, s
     console.groupEnd();
 });
 
+xhr.open('GET', 'http://google.com:80');
+//xhr.open('GET', 'http://google.asgasgscom:80');
 //xhr.open('GET', 'http://httpconsole.local:80/redirect?foo=bar');
-//xhr.open('GET', 'http://google.com:80');
-xhr.open('GET', 'http://google.asgasgscom:80');
 xhr.setRequestHeader('X-Requested-With', 'chrome.sockets.tcp.xhr');
 xhr.send(null);
