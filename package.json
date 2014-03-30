@@ -19,7 +19,8 @@
     "Sockets"
   ],
   "files": [
-    "dist"
+    "dist",
+    "LICENSE"
   ],
   "dependencies": {},
   "devDependencies": {

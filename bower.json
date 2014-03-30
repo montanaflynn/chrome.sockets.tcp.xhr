@@ -12,16 +12,16 @@
     "Sockets"
   ],
   "main": [
-    "dist/chrome.sockets.tcp.xhr.js",
     "dist/chrome.sockets.tcp.xhr.min.js"
   ],
   "ignore": [
     "**/.*",
-    ".md",
+    "docs",
     "test",
     "src",
     "node_modules",
     "package.json",
-    "Gruntfile.js"
+    "Gruntfile.js",
+    "CONTRIBUTING.md"
   ]
 }
