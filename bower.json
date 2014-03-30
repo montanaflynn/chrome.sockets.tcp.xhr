@@ -2,11 +2,9 @@
   "version": "0.0.2",
   "name": "chrome.sockets.tcp.xhr",
   "description": "an XMLHttpRequest drop-in replacement using chrome.sockets.tcp for Chrome Apps",
-  "license": "MIT",
+  "author": "Ahmad Nassri <ahmad@codeinchaos.com> (http://ahmadnassri.com)",
   "homepage": "https://github.com/codeinchaos/chrome.sockets.tcp.xhr",
-  "authors": [
-    "Ahmad Nassri <ahmad@codeinchaos.com> (http://ahmadnassri.com)"
-  ],
+  "license": "MIT",
   "keywords": [
     "XHR",
     "XMLHttpRequest",
