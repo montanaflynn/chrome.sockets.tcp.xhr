@@ -16,7 +16,7 @@ module.exports = function (grunt) {
         banner: '/*!\n' +
               ' * chrome.sockets.tcp.xhr v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
               ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-              ' * Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
+              ' * Licensed under <%= pkg.license %> License\n' +
               ' */\n\n',
 
         clean: {
@@ -114,7 +114,7 @@ module.exports = function (grunt) {
                 updateConfigs: ['pkg'],
                 commit: true,
                 commitMessage: 'Release v%VERSION%',
-                commitFiles: ['package.json'], // '-a' for all files
+                commitFiles: ['package.json', 'bower.json'],
                 createTag: true,
                 tagName: 'v%VERSION%',
                 tagMessage: 'Version %VERSION%',

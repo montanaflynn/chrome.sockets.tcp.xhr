@@ -21,7 +21,6 @@
     "src",
     "node_modules",
     "package.json",
-    "Gruntfile.js",
-    "CONTRIBUTING.md"
+    "Gruntfile.js"
   ]
 }
