@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "chrome.sockets.tcp.xhr test",
   "main": "test.js",
   "version": "0.0.0",
