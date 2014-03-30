@@ -19,7 +19,6 @@
     "Chrome",
     "Sockets"
   ],
-  "main": "dist/chrome.sockets.tcp.xhr.min.js",
   "files": [
     "dist"
   ],
@@ -30,11 +29,17 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-jshint": "~0.9.2",
     "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-qunit": "~0.4.0",
+    "grunt-qunit-istanbul": "~0.3.0",
+    "grunt-contrib-connect": "~0.6.0",
+    "grunt-coveralls": "~0.3.0",
     "grunt-bumpx": "~0.2.0",
     "load-grunt-tasks": "~0.4.0",
-    "time-grunt": "~0.3.1"
+    "time-grunt": "~0.3.1",
+    "phantomjs": "~1.9.7-1"
   },
   "scripts": {
+    "ci": "grunt test && grunt coveralls",
     "release": "grunt release --verbose"
   }
 }

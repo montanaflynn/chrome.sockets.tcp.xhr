@@ -4,7 +4,7 @@
 
     "app": {
         "background": {
-            "scripts": ["chrome.sockets.tcp.xhr.js", "main.js"]
+            "scripts": ["main.js"]
         }
     },
 

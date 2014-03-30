@@ -1,0 +1,20 @@
+{
+  "name": "chrome.sockets.tcp.xhr test",
+  "main": "test.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/codeinchaos/chrome.sockets.tcp.xhr",
+  "authors": [
+    "Ahmad Nassri <ahmad@codeinchaos.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "qunit": "~1.14.0"
+  }
+}

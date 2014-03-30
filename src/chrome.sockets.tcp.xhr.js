@@ -502,11 +502,11 @@
             return;
         }
 
-        var port = this.options.uri[3] ? this.options.uri[3] : 80;
+        var port = this.options.uri[3] ? parseInt(this.options.uri[3], null) : 80;
 
         this.options.createInfo = createInfo;
 
-        chrome.sockets.tcp.connect(createInfo.socketId, this.options.uri[2], parseInt(port, null), this.onConnect.bind(this));
+        chrome.sockets.tcp.connect(createInfo.socketId, this.options.uri[2], port, this.onConnect.bind(this));
     };
 
     ChromeSocketsXMLHttpRequest.prototype.onConnect = function (result) {
@@ -538,6 +538,7 @@
                 error: 'send error',
                 resultCode: sendInfo.resultCode
             });
+
             this.disconnect();
         }
     };
@@ -572,6 +573,15 @@
     ChromeSocketsXMLHttpRequest.prototype.parseResponse = function (response) {
         // detect CRLFx2 position
         var responseMatch = response.match(/\r\n\r\n/);
+
+        // something went wrong
+        if (responseMatch === null) {
+            this.error({
+                error: 'could not parse response'
+            });
+
+            return;
+        }
 
         // slice the headers up to CRLFx2
         this.options.response.headersText = response.slice(0, responseMatch.index);

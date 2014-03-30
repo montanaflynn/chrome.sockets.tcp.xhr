@@ -21,8 +21,8 @@ module.exports = function (grunt) {
 
         clean: {
             dist: ['dist'],
-            all: ['dist', 'node_modules'],
-            report: ['test/report']
+            test: ['test/report', 'test/dist'],
+            all: ['dist', 'test/report', 'test/dist', 'test/bower_components', 'node_modules'],
         },
 
         uglify: {
@@ -33,7 +33,7 @@ module.exports = function (grunt) {
                 },
 
                 files: {
-                    'test/chrome.sockets.tcp.xhr.js': ['src/*.js'],
+                    'test/lib/chrome.sockets.tcp.xhr.js': ['src/*.js'],
                 }
             },
 
@@ -53,7 +53,38 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc'
             },
 
-            dist: ['Gruntfile.js', 'src/*.js'],
+            gruntfile: ['Gruntfile.js'],
+            dist: ['src/*.js'],
+        },
+
+        qunit: {
+            dev: {
+                options: {
+                    urls: ['test/index.html'],
+                    coverage: {
+                        src: ['test/lib/*.js'],
+                        instrumentedFiles: 'tmp/',
+                        htmlReport: 'test/report/coverage',
+                        lcovReport: 'test/report/lcov',
+                        linesThresholdPct: 0
+                    }
+                }
+            }
+        },
+
+        connect: {
+            server: {
+                options: {
+                    port: 8000,
+                    base: 'test'
+                }
+            }
+        },
+
+        coveralls: {
+            all: {
+                src: 'test/report/lcov/lcov.info'
+            }
         },
 
         watch: {
@@ -62,9 +93,18 @@ module.exports = function (grunt) {
                 livereload: true,
             },
 
+            test: {
+                files: ['test/index.html', 'test/test.js'],
+            },
+
+            gruntfile: {
+                files: ['Gruntfile.js'],
+                tasks: ['jshint:gruntfile']
+            },
+
             js: {
                 files: ['src/*.js'],
-                tasks: ['jshint', 'uglify:dev']
+                tasks: ['jshint:dist', 'uglify:dev']
             }
         },
 
@@ -83,13 +123,15 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', [
-        'clean:report',
+        'clean:dist',
+        'uglify:dev',
         'jshint',
+        'qunit'
     ]);
 
     grunt.registerTask('default', [
         'test',
-        'uglify:dev',
+        'connect',
         'watch'
     ]);
 

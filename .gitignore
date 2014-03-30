@@ -5,6 +5,7 @@ npm-debug.log
 test/report
 node_modules
 docs/_build/
+test/bower_components
 
 # compiled testing files
 test/chrome.sockets.tcp.xhr.*
