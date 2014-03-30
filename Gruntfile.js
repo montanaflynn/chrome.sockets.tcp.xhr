@@ -123,10 +123,10 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', [
-        'clean:dist',
+        'clean:test',
         'uglify:dev',
         'jshint',
-        'qunit'
+        //'qunit'
     ]);
 
     grunt.registerTask('default', [
