@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.2",
   "name": "chrome.sockets.tcp.xhr",
   "description": "an XMLHttpRequest drop-in replacement using chrome.sockets.tcp for Chrome Apps",
   "license": "MIT",
