@@ -110,15 +110,17 @@ module.exports = function (grunt) {
 
         bump: {
             options: {
-                part: 'minor',
-                onBumped: function(data) {
-                    if (data.index === 0) {
-                        grunt.config('pkg.version', data.version);
-                    }
-                }
-            },
-
-            files: ['package.json', 'bower.json']
+                files: ['package.json', 'bower.json'],
+                updateConfigs: ['pkg'],
+                commit: true,
+                commitMessage: 'Release v%VERSION%',
+                commitFiles: ['package.json'], // '-a' for all files
+                createTag: true,
+                tagName: 'v%VERSION%',
+                tagMessage: 'Version %VERSION%',
+                push: true,
+                pushTo: 'upstream'
+            }
         }
     });
 
