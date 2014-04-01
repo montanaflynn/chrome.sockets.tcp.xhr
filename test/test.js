@@ -1,3 +1,7 @@
+test('polyfill test', function() {
+
+});
+
 test('initiate', function() {
     var xhr = new chrome.sockets.tcp.xhr();
 
