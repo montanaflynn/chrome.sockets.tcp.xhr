@@ -34,7 +34,7 @@ module.exports = function (grunt) {
 
                 files: {
                     'test/lib/chrome.sockets.polyfill.js': ['src/chrome.sockets.polyfill.js'],
-                    'test/lib/chrome.sockets.tcp.xhr.js': ['srcchrome.sockets.tcp.xhr.js'],
+                    'test/lib/chrome.sockets.tcp.xhr.js': ['src/chrome.sockets.tcp.xhr.js'],
                 }
             },
 

@@ -22,5 +22,8 @@
     "node_modules",
     "package.json",
     "Gruntfile.js"
-  ]
+  ],
+  "devDependencies": {
+    "qunit": "~1.14.0"
+  }
 }
