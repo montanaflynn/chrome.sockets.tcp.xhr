@@ -1,7 +1,3 @@
-test('polyfill test', function() {
-
-});
-
 test('initiate', function() {
     var xhr = new chrome.sockets.tcp.xhr();
 
@@ -21,6 +17,7 @@ asyncTest('readystatechange event', function() {
     });
 
     xhr.open('GET', 'http://httpconsole.com');
+    xhr.setRequestHeader('User-Agent', 'curl/7.32.0');
     xhr.send(null);
 });
 

@@ -24,7 +24,6 @@
                     },
                     headers: {
                         'Connection': 'close',
-                        'Accept-Encoding': 'identity',
                         'Content-Length': 0
                     },
                     response: {
@@ -310,6 +309,11 @@
         // check if the URI parsed properly
         if (this.options.uri === null) {
             throw new TypeError('url cannot be parsed');
+        }
+
+        // catch no path specified error
+        if (this.options.uri[4] === undefined) {
+            this.options.uri[4] = '/';
         }
 
         // set readyState to OPENED
