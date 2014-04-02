@@ -39,7 +39,7 @@ module.exports = function (grunt) {
 
             rst: {
                 files: ['*.rst'],
-                tasks: ['shell'],
+                tasks: ['clean', 'shell'],
             }
         }
     });
