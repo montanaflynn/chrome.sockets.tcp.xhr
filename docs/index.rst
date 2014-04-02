@@ -1,12 +1,11 @@
-.. _usage:
 .. toctree::
    :hidden:
 
    api
 
-********
-Overview
-********
+**********************
+chrome.sockets.tcp.xhr
+**********************
 
 Getting Started
 ===============

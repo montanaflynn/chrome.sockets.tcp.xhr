@@ -1,9 +1,3 @@
-.. _api:
-.. toctree::
-   :hidden:
-
-   index
-
 ***************
 Reference Guide
 ***************
