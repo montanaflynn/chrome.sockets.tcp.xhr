@@ -11,12 +11,12 @@ asyncTest('readystatechange event', function() {
     xhr.addEventListener('readystatechange', function () {
         if (this.readyState === this.DONE) {
             equal(this.statusText, '200 OK', 'correct status text');
-            equal(this.responseText, '<html><body>Hello World</body></html>', 'correct response body');
+            equal(this.responseText, 'Hello World', 'correct response body');
             start();
         }
     });
 
-    xhr.open('GET', 'http://httpconsole.com');
+    xhr.open('GET', 'http://httpconsole.com/text/Hello%20World');
     xhr.send(null);
 });
 
@@ -32,7 +32,7 @@ asyncTest('load event', function() {
     xhr.open('GET', 'http://httpconsole.com');
     xhr.send(null);
 });
-/*
+
 asyncTest('error event', function() {
     var xhr = new chrome.sockets.tcp.xhr();
 
@@ -58,11 +58,9 @@ asyncTest('timeout event', function() {
     xhr.open('GET', 'http://httpconsole.com');
     xhr.send(null);
 });
-*/
 
 asyncTest('beforeredirect event', function() {
     var xhr = new chrome.sockets.tcp.xhr();
-
 
     xhr.addEventListener('beforeredirect', function (redirectUrl, responseHeaders, statusText) {
         console.group('[beforeredirect]');

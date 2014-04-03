@@ -2,6 +2,7 @@
 npm-debug.log
 
 # Folders to ignore
+test/lib
 test/report
 node_modules
 docs/_build/

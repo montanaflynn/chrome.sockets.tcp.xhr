@@ -24,8 +24,7 @@
                     },
                     headers: {
                         'Connection': 'close',
-                        'Accept-Encoding': 'identity',
-                        'Content-Length': 0
+                        'User-Agent': 'chrome.sockets.tcp.xhr'
                     },
                     response: {
                         headers: [],
@@ -312,6 +311,11 @@
             throw new TypeError('url cannot be parsed');
         }
 
+        // catch no path specified error
+        if (this.options.uri[4] === undefined) {
+            this.options.uri[4] = '/';
+        }
+
         // set readyState to OPENED
         this.readyState = this.OPENED;
 
@@ -561,7 +565,7 @@
             return;
         }
 
-        // immediatly disconnect on first respond
+        // immediately disconnect on first respond
         this.disconnect();
 
         info.data.toString(this.parseResponse.bind(this));
@@ -693,7 +697,7 @@
             headers.push(name + ': ' + this.options.headers[name]);
         }
 
-        return headers.join('\r\n') + '\r\n\r\n' + this.options.data;
+        return headers.join('\r\n') + '\r\n\r\n';
     };
 
     ChromeSocketsXMLHttpRequest.prototype.error = function (error) {

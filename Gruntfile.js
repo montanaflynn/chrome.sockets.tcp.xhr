@@ -33,7 +33,7 @@ module.exports = function (grunt) {
                 },
 
                 files: {
-                    'test/lib/chrome.sockets.tcp.xhr.js': ['src/*.js'],
+                    'test/lib/chrome.sockets.tcp.xhr.js': ['src/chrome.sockets.tcp.xhr.js'],
                 }
             },
 
@@ -43,7 +43,7 @@ module.exports = function (grunt) {
                 },
 
                 files: {
-                    'dist/chrome.sockets.tcp.xhr.min.js': ['src/*.js']
+                    'dist/chrome.sockets.tcp.xhr.min.js': ['src/chrome.sockets.tcp.xhr.js']
                 }
             }
         },
