@@ -24,7 +24,7 @@
                     },
                     headers: {
                         'Connection': 'close',
-                        'Content-Length': 0
+                        'User-Agent': 'chrome.sockets.tcp.xhr'
                     },
                     response: {
                         headers: [],
@@ -565,7 +565,7 @@
             return;
         }
 
-        // immediatly disconnect on first respond
+        // immediately disconnect on first respond
         this.disconnect();
 
         info.data.toString(this.parseResponse.bind(this));
