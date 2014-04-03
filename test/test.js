@@ -12,7 +12,6 @@ asyncTest('readystatechange event', function() {
         if (this.readyState === this.DONE) {
             equal(this.statusText, '200 OK', 'correct status text');
             equal(this.responseText, 'Hello World', 'correct response body');
-            console.info('responseHeaders:', xhr.options.response.headers);
             start();
         }
     });

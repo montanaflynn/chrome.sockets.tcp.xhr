@@ -697,7 +697,7 @@
             headers.push(name + ': ' + this.options.headers[name]);
         }
 
-        return headers.join('\r\n') + '\r\n\r\n' + this.options.data;
+        return headers.join('\r\n') + '\r\n\r\n';
     };
 
     ChromeSocketsXMLHttpRequest.prototype.error = function (error) {
