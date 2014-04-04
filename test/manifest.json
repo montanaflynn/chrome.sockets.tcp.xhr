@@ -8,6 +8,10 @@
         }
     },
 
+    "sandbox": {
+        "pages": ["test.html"]
+    },
+
     "version": "0.0.0",
     "name": "chrome.sockets.tcp.xhr",
     "author": "Ahmad Nassri <ahmad@codeinchaos.com> (http://ahmadnassri.com)",

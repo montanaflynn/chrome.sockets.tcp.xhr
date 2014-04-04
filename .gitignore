@@ -2,11 +2,11 @@
 npm-debug.log
 
 # Folders to ignore
-test/lib
-test/report
-node_modules
+test/src
+test/.jasmine
+test/coverage
 docs/_build/
-test/bower_components
+node_modules
 
 # compiled testing files
 test/chrome.sockets.tcp.xhr.*

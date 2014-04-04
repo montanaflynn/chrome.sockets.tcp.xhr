@@ -1,33 +1,21 @@
-test('initiate', function() {
+describe('XMLHttpRequest Initialize', function() {
+    'use strict';
+
     var xhr = new chrome.sockets.tcp.xhr();
 
-    ok(xhr instanceof chrome.sockets.tcp.xhr, 'created instance of chrome.sockets.tcp.xhr');
-});
-
-asyncTest('readystatechange event', function() {
-    var xhr = new chrome.sockets.tcp.xhr();
-
-    // xhr.onreadystatechange = function() {
-    xhr.addEventListener('readystatechange', function () {
-        if (this.readyState === this.DONE) {
-            equal(this.statusText, '200 OK', 'correct status text');
-            equal(this.responseText, 'Hello World', 'correct response body');
-            start();
-        }
+    it('should initiate an instance of chrome.sockets.tcp.xhr', function() {
+        expect(xhr instanceof chrome.sockets.tcp.xhr).toBe(true);
     });
-
-    xhr.open('GET', 'http://httpconsole.com/text/Hello%20World');
-    xhr.send(null);
 });
+
+
+/* OLD QUNIT TESTS
 
 asyncTest('load event', function() {
     var xhr = new chrome.sockets.tcp.xhr();
 
     // xhr.onload = function (e) {
-    xhr.addEventListener('load', function (e) {
-        equal(xhr.readyState, 4, 'readyState == 4 when load event is triggered');
-        start();
-    });
+
 
     xhr.open('GET', 'http://httpconsole.com');
     xhr.send(null);
@@ -74,3 +62,5 @@ asyncTest('beforeredirect event', function() {
     xhr.open('GET', 'http://httpconsole.com/redirect');
     xhr.send(null);
 });
+
+*/

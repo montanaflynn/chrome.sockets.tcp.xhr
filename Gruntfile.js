@@ -8,7 +8,9 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     // load all grunt tasks
-    require('load-grunt-tasks')(grunt);
+    require('load-grunt-tasks')(grunt, {
+      pattern: ['grunt-*', '!grunt-template-jasmine-istanbul']
+    });
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -21,8 +23,7 @@ module.exports = function (grunt) {
 
         clean: {
             dist: ['dist'],
-            test: ['test/report', 'test/dist'],
-            all: ['dist', 'test/report', 'test/dist', 'test/bower_components', 'node_modules'],
+            test: ['test/coverage', 'test/src', 'test/.jasmine'],
         },
 
         uglify: {
@@ -33,7 +34,7 @@ module.exports = function (grunt) {
                 },
 
                 files: {
-                    'test/lib/chrome.sockets.tcp.xhr.js': ['src/chrome.sockets.tcp.xhr.js'],
+                    'test/src/chrome.sockets.tcp.xhr.js': ['src/chrome.sockets.tcp.xhr.js'],
                 }
             },
 
@@ -53,20 +54,37 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc'
             },
 
-            gruntfile: ['Gruntfile.js'],
             dist: ['src/*.js'],
+            test: ['test/main.js', 'test/vendor/chrome.polyfill.js', 'test/specs/*.js'],
+            gruntfile: ['Gruntfile.js'],
         },
 
-        qunit: {
-            dev: {
+        copy: {
+            jasmine: {
+                files: [
+                    {expand: true, flatten: true, filter: 'isFile', src: ['node_modules/grunt-contrib-jasmine/vendor/jasmine-*/**'], dest: 'test/.jasmine/'},
+                ]
+            }
+        },
+
+        jasmine: {
+            dist: {
+                src: 'src/*.js',
                 options: {
-                    urls: ['test/index.html'],
-                    coverage: {
-                        src: ['test/lib/*.js'],
-                        instrumentedFiles: 'tmp/',
-                        htmlReport: 'test/report/coverage',
-                        lcovReport: 'test/report/lcov',
-                        linesThresholdPct: 0
+                    specs: 'test/specs/*.js',
+                    vendor: 'test/vendor/*.js',
+                    template: require('grunt-template-jasmine-istanbul'),
+                    templateOptions: {
+                        coverage: 'test/coverage/coverage.json',
+                        report: 'test/coverage',
+                        /*
+                        thresholds: {
+                            lines: 75,
+                            statements: 75,
+                            branches: 75,
+                            functions: 90
+                        }
+                        */
                     }
                 }
             }
@@ -94,7 +112,8 @@ module.exports = function (grunt) {
             },
 
             test: {
-                files: ['test/index.html', 'test/test.js'],
+                files: ['test/main.js', 'test/vendor/chrome.polyfill.js', 'test/specs/*.js'],
+                tasks: ['jshint:test', 'jasmine']
             },
 
             gruntfile: {
@@ -104,7 +123,7 @@ module.exports = function (grunt) {
 
             js: {
                 files: ['src/*.js'],
-                tasks: ['jshint:dist', 'uglify:dev']
+                tasks: ['jshint:dist', 'uglify', 'jasmine']
             }
         },
 
@@ -125,10 +144,11 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', [
-        'clean:test',
-        'uglify:dev',
         'jshint',
-        //'qunit'
+        'clean',
+        'uglify',
+        'copy',
+        'jasmine'
     ]);
 
     grunt.registerTask('default', [
@@ -137,14 +157,8 @@ module.exports = function (grunt) {
         'watch'
     ]);
 
-    grunt.registerTask('build', [
-        'test',
-        'clean:dist',
-        'uglify:dist'
-    ]);
-
     grunt.registerTask('release', [
-        'build',
+        'test',
         'bump-only',
         'changelog',
         'bump-commit'
