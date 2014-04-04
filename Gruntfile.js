@@ -137,9 +137,16 @@ module.exports = function (grunt) {
         'watch'
     ]);
 
-    grunt.registerTask('release', [
+    grunt.registerTask('build', [
         'test',
         'clean:dist',
         'uglify:dist'
+    ]);
+
+    grunt.registerTask('release', [
+        'build',
+        'bump-only',
+        'changelog',
+        //'bump-commit'
     ]);
 };
