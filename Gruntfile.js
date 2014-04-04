@@ -147,6 +147,6 @@ module.exports = function (grunt) {
         'build',
         'bump-only',
         'changelog',
-        //'bump-commit'
+        'bump-commit'
     ]);
 };

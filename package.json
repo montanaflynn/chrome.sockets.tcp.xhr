@@ -40,6 +40,6 @@
   },
   "scripts": {
     "ci": "grunt test && grunt coveralls",
-    "release": "grunt release --verbose"
+    "release": "grunt build --verbose"
   }
 }
