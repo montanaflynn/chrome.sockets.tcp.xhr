@@ -1,5 +1,5 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.3",
   "name": "chrome.sockets.tcp.xhr",
   "description": "an XMLHttpRequest drop-in replacement using chrome.sockets.tcp for Chrome Apps",
   "author": "Ahmad Nassri <ahmad@codeinchaos.com> (http://ahmadnassri.com)",
